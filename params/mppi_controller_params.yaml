@@ -1,0 +1,102 @@
+MPPIControllerRos:
+    vx_max: 0.5
+    vy_max: 0.0
+    vx_min: -0.35
+    wz_max: 1.9
+    ax_max: 3.0
+    ax_min: -3.0
+    ay_max: 3.0
+    az_max: 3.5
+    vx_std: 0.2
+    vy_std: 0.2
+    wz_std: 0.4
+    xy_goal_tolerance: 0.25
+    yaw_goal_tolerance: 0.25
+    theta_stopped_vel: 0.1
+    trans_stopped_vel: 0.1
+    controller_frequency: 20.0
+    ackermann_constraints_min_turning_r: 0.2
+
+    constrain_cost_power: 1
+    constrain_cost_weight: 4.0
+
+    cost_power: 1
+    cost_weight: 3.81
+    cost_critical_cost: 300.0
+    cost_collision_cost: 1000000.0
+    cost_near_goal_distance: 0.5
+    cost_inflation_layer_name: ""
+    cost_trajectory_point_step: 2
+    cost_consider_footprint: false
+
+    goal_angle_cost_power: 1
+    goal_angle_cost_weight: 3.0
+    goal_angle_threshold_to_consider: 0.5
+
+    goal_cost_power: 1
+    goal_cost_weight: 5.0
+    goal_threshold_to_consider: 1.4
+
+    obstacles_consider_footprint: false
+    obstacles_cost_power: 1
+    obstacles_repulsion_weight: 1.5
+    obstacles_critical_weight: 20.0
+    obstacles_collision_cost: 100000.0
+    obstacles_collision_margin_distance: 0.1
+    obstacles_near_goal_distance: 0.5
+    obstacles_inflation_layer_name: ""
+
+    path_align_offset_from_furthest: 20
+    path_align_trajectory_point_step: 4
+    path_align_threshold_to_consider: 0.5
+    path_align_max_path_occupancy_ratio: 0.07
+    path_align_use_path_orientations: false
+    path_align_cost_power: 1
+    path_align_cost_weight: 10.0
+
+    path_angle_offset_from_furthest: 4
+    path_angle_cost_power: 1
+    path_angle_cost_weight: 2.2
+    path_angle_max_angle_to_furthest: 0.785398
+    path_angle_threshold_to_consider: 0.5
+    path_angle_mode: 0
+
+    path_follow_cost_power: 1
+    path_follow_cost_weight: 5.0
+    path_follow_threshold_to_consider: 1.4
+    path_follow_offset_from_furthest: 6
+
+    prefer_forward_cost_power: 1
+    prefer_forward_cost_weight: 5.0
+    prefer_forward_threshold_to_consider: 0.5
+
+    twirling_cost_power: 1
+    twirling_cost_weight: 10.0
+
+    velocity_deadband_cost_power: 1
+    velocity_deadband_cost_weight: 35.0
+    velocity_deadband_velocities_1: 0.0
+    velocity_deadband_velocities_2: 0.0
+    velocity_deadband_velocities_3: 0.0
+
+    path_handler_max_robot_pose_search_dist: 1.5
+    path_handler_prune_distance: 1.5
+    path_handler_transform_tolerance: 0.1
+    path_handler_enforce_path_inversion: false
+    path_handler_inversion_xy_tolerance: 0.2
+    path_handler_inversion_yaw_tolerance: 0.4
+
+    trajectory_visualizer_visualize: true
+    trajectory_visualizer_trajectory_step: 5
+    trajectory_visualizer_time_step: 3
+
+    noise_generator_regenerate_noises: false
+
+    optimizer_model_dt: 0.05
+    optimizer_time_steps: 56
+    optimizer_batch_size: 1000
+    optimizer_iteration_count: 1
+    optimizer_temperature: 0.3
+    optimizer_gamma: 0.015
+    optimizer_retry_attempt_limit: 1
+    optimizer_motion_model: "DiffDrive"
