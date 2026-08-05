@@ -56,7 +56,7 @@ void MPPIControllerROS::initialize(
     ROS_INFO("Configured MPPI Controller: %s", name.c_str());
   }
   else{
-    ROS_WARN("[RPP] RegulatedPurePursuitController already initialized.");
+    ROS_WARN("[MPPI] MPPIControllerROS already initialized.");
   }
 
 }
@@ -176,7 +176,7 @@ bool MPPIControllerROS::setPlan(const std::vector<geometry_msgs::PoseStamped>& p
 {
   if(!initialized_)
   {
-    ROS_ERROR("[RPP] RegulatedPurePursuitController has not been initialized, please call initialize() before using this planner");
+    ROS_ERROR("[MPPI] MPPIControllerROS has not been initialized, please call initialize() before using this planner");
     return false;
   }
   nav_msgs::Path path;
