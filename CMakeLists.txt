@@ -85,6 +85,9 @@ add_library(mppi_critics SHARED
 
 target_link_libraries(mppi_critics ${catkin_LIBRARIES})
 
+add_executable(cpu_sweep_benchmark benchmark/cpu_sweep_benchmark.cpp)
+target_link_libraries(cpu_sweep_benchmark mppi_controller_ros mppi_critics ${catkin_LIBRARIES})
+
 install(TARGETS mppi_controller_ros mppi_critics
     ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
     LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
