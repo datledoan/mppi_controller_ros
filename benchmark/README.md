@@ -31,9 +31,9 @@ rosrun mppi_controller_ros cpu_sweep_benchmark 5 30 > cpu.csv    # redirect is s
 calls actually timed and used for the CSV's mean/median/p95/max.
 
 Default sweep: `batch_size` in {256, 512, 1024, 2048,
-4096, 8192, 16384}, `time_steps` in {32, 56, 100} — edit the vectors at the
+4096, 8192}, `time_steps` in {32, 56, 100} — edit the vectors at the
 top of `cpu_sweep_benchmark.cpp`'s `main()` to change the grid. Large
-batch_sizes are slow (single CPU core) — e.g. 16384 takes ~1-2s *per call*,
+batch_sizes are slow (single CPU core),
 so a full default sweep takes several minutes.
 
 ## Output

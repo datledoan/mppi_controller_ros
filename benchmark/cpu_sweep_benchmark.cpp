@@ -201,7 +201,7 @@ int main(int argc, char** argv)
   }
   geometry_msgs::Pose goal = path.poses.back().pose;
 
-  std::vector<int> batch_sizes = { 256, 512, 1024, 2048, 4096, 8192, 16384 };
+  std::vector<int> batch_sizes = { 256, 512, 1024, 2048, 4096, 8192};
   std::vector<int> timesteps_sweep = { 32, 56, 100 };  // matches the CUDA sweep's grid
 
   printf("batch_size,time_steps,wall_mean_ms,wall_median_ms,wall_p95_ms,wall_max_ms,cpu_mean_ms\n");
