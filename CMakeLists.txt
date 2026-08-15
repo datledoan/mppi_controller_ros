@@ -4,6 +4,13 @@ project(mppi_controller_ros)
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++17)
 
+add_compile_options(-O3)
+include(CheckCXXCompilerFlag)
+check_cxx_compiler_flag("-mfma" COMPILER_SUPPORTS_FMA)
+if(COMPILER_SUPPORTS_FMA)
+  add_compile_options(-mfma)
+endif()
+
 find_package(catkin REQUIRED COMPONENTS
   angles
   base_local_planner
