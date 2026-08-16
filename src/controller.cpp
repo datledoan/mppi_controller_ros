@@ -117,9 +117,12 @@ uint32_t MPPIControllerROS::computeVelocityCommands(const geometry_msgs::PoseSta
   geometry_msgs::Twist speed = base_odom.twist.twist;
 
   geometry_msgs::PoseStamped global_goal = transformed_plan.poses.back();
-  double dx_2 = global_goal.pose.position.x * global_goal.pose.position.x;
-  double dy_2 = global_goal.pose.position.y * global_goal.pose.position.y;
-  double dtheta = angles::normalize_angle(tf2::getYaw(global_goal.pose.orientation));
+  double dx = global_goal.pose.position.x - pose.pose.position.x;
+  double dy = global_goal.pose.position.y - pose.pose.position.y;
+  double dx_2 = dx * dx;
+  double dy_2 = dy * dy;
+  double dtheta = angles::shortest_angular_distance(
+      tf2::getYaw(pose.pose.orientation), tf2::getYaw(global_goal.pose.orientation));
 
   if(fabs(std::sqrt(dx_2 + dy_2)) < xy_goal_tolerance_ && isThetaGoalReached(dtheta, yaw_goal_tolerance_, max_angular_vel_, control_duration_) && base_local_planner::stopped(base_odom, theta_stopped_vel_, trans_stopped_vel_))
   {
@@ -182,6 +185,7 @@ bool MPPIControllerROS::setPlan(const std::vector<geometry_msgs::PoseStamped>& p
   nav_msgs::Path path;
   createPathMsg(plan, path);
   path_handler_.setPath(path);
+  goal_reached_ = false;
   return true;
 }
 
