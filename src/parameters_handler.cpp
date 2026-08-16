@@ -134,6 +134,8 @@ ParametersHandler::ParametersHandler(std::shared_ptr<ros::NodeHandle> node, std:
   private_node_->param<bool>("trajectory_visualizer_visualize", params_.trajectory_visualizer_visualize, true);
   private_node_->param<int>("trajectory_visualizer_trajectory_step", params_.trajectory_visualizer_trajectory_step, 5);
   private_node_->param<int>("trajectory_visualizer_time_step", params_.trajectory_visualizer_time_step, 3);
+  private_node_->param<double>(
+    "trajectory_visualizer_samples_percentage", params_.trajectory_visualizer_samples_percentage, 0.05);
 
   // Noise generator parameters
   private_node_->param<bool>("noise_generator_regenerate_noises", params_.noise_generator_regenerate_noises, false);
@@ -282,6 +284,7 @@ void ParametersHandler::dynamicParamsCallback(const MPPIControllerRosConfig& cfg
   params_.trajectory_visualizer_visualize = cfg.trajectory_visualizer_visualize;
   params_.trajectory_visualizer_trajectory_step = cfg.trajectory_visualizer_trajectory_step;
   params_.trajectory_visualizer_time_step = cfg.trajectory_visualizer_time_step;
+  params_.trajectory_visualizer_samples_percentage = cfg.trajectory_visualizer_samples_percentage;
 
   // Noise generator parameters
   params_.noise_generator_regenerate_noises = cfg.noise_generator_regenerate_noises;

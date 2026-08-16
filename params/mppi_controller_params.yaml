@@ -94,7 +94,7 @@ MPPIControllerROS:
 
     optimizer_model_dt: 0.05
     optimizer_time_steps: 56
-    optimizer_batch_size: 1000
+    optimizer_batch_size: 2000
     optimizer_iteration_count: 1
     optimizer_temperature: 0.3
     optimizer_gamma: 0.015

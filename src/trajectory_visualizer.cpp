@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <algorithm>
+#include <cmath>
 #include <memory>
 #include "mppi_controller_ros/tools/trajectory_visualizer.hpp"
 
@@ -81,9 +83,14 @@ void TrajectoryVisualizer::add(
   size_t n_rows = trajectories.x.rows();
   size_t n_cols = trajectories.x.cols();
   const float shape_1 = static_cast<float>(n_cols);
-  points_.markers.reserve(floor(n_rows / trajectory_step_) * floor(n_cols * time_step_));
 
-  for (size_t i = 0; i < n_rows; i += trajectory_step_) {
+  double percentage = std::max(parameters_->trajectory_visualizer_samples_percentage, 1e-4);
+  size_t percentage_stride = std::max<size_t>(1, static_cast<size_t>(std::lround(1.0 / percentage)));
+  size_t row_stride = std::max(trajectory_step_, percentage_stride);
+
+  points_.markers.reserve(floor(n_rows / row_stride) * floor(n_cols * time_step_));
+
+  for (size_t i = 0; i < n_rows; i += row_stride) {
     for (size_t j = 0; j < n_cols; j += time_step_) {
       const float j_flt = static_cast<float>(j);
       float blue_component = 1.0f - j_flt / shape_1;

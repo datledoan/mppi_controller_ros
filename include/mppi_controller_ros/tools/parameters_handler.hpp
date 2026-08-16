@@ -141,6 +141,7 @@ struct Parameters
   bool trajectory_visualizer_visualize;
   int trajectory_visualizer_trajectory_step;
   int trajectory_visualizer_time_step;
+  double trajectory_visualizer_samples_percentage;
 
   // Noise generator
   bool noise_generator_regenerate_noises;
