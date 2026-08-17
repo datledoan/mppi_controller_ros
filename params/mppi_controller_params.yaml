@@ -17,6 +17,9 @@ MPPIControllerROS:
     controller_frequency: 20.0
     ackermann_constraints_min_turning_r: 0.2
 
+    # remove critics that are not needed for better performance
+    critic_manager_critics: "PathAlignCritic,PathFollowCritic,PreferForwardCritic,GoalCritic,GoalAngleCritic,PathAngleCritic,TwirlingCritic,CostCritic,ConstraintCritic,VelocityDeadbandCritic,ObstaclesCritic"
+
     constrain_cost_power: 1
     constrain_cost_weight: 4.0
 
@@ -39,8 +42,8 @@ MPPIControllerROS:
 
     obstacles_consider_footprint: false
     obstacles_cost_power: 1
-    obstacles_repulsion_weight: 1.5
-    obstacles_critical_weight: 20.0
+    obstacles_repulsion_weight: 0.0
+    obstacles_critical_weight: 0.0
     obstacles_collision_cost: 100000.0
     obstacles_collision_margin_distance: 0.1
     obstacles_near_goal_distance: 0.5
@@ -71,7 +74,7 @@ MPPIControllerROS:
     prefer_forward_threshold_to_consider: 0.5
 
     twirling_cost_power: 1
-    twirling_cost_weight: 10.0
+    twirling_cost_weight: 0.0
 
     velocity_deadband_cost_power: 1
     velocity_deadband_cost_weight: 35.0
@@ -89,8 +92,9 @@ MPPIControllerROS:
     trajectory_visualizer_visualize: true
     trajectory_visualizer_trajectory_step: 5
     trajectory_visualizer_time_step: 3
+    trajectory_visualizer_samples_percentage: 0.05
 
-    noise_generator_regenerate_noises: false
+    noise_generator_regenerate_noises: true
 
     optimizer_model_dt: 0.05
     optimizer_time_steps: 56
