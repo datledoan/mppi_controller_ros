@@ -86,8 +86,6 @@ protected:
   float findCircumscribedCost(std::shared_ptr<costmap_2d::Costmap2DROS> costmap);
 
 protected:
-  std::shared_ptr<costmap_2d::Costmap2DROS> costmap_ros_;
-  costmap_2d::Costmap2D* costmap_;
   base_local_planner::CostmapModel* collision_checker_;
 
   bool consider_footprint_{true};
