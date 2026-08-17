@@ -44,6 +44,10 @@ SweepPointResult runSweepPoint(std::shared_ptr<ros::NodeHandle> node, std::share
 {
   ros::param::set("/mppi_cpu_sweep_bench/optimizer_batch_size", batch_size);
   ros::param::set("/mppi_cpu_sweep_bench/optimizer_time_steps", time_steps);
+  ros::param::set("/mppi_cpu_sweep_bench/critic_manager_critics",
+                   std::string("PathAlignCritic,PathFollowCritic,PreferForwardCritic,GoalCritic,"
+                               "GoalAngleCritic,PathAngleCritic,TwirlingCritic,CostCritic,ConstraintCritic,"
+                               "VelocityDeadbandCritic,ObstaclesCritic"));
 
   mppi::ParametersHandler params_handler(node, private_node);
   mppi::Parameters* params = params_handler.getParams();

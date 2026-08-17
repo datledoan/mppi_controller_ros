@@ -15,7 +15,7 @@ roscore &
 ## Build
 
 ```bash
-catkin build mppi_controller_ros
+catkin build -j2 mppi_controller_ros --cmake-args -DMPPI_BUILD_BENCHMARKS=ON
 ```
 
 ## Run
